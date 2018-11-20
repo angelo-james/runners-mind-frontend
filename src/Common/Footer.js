@@ -1,51 +1,28 @@
 import React, { Component } from 'react'
 
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  Container } from 'reactstrap';
 
 class Footer extends Component {
   render() {
     return (
       <div className="mt-5">
-        <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">Runners Mind</NavbarBrand>
-          <NavbarToggler />
-          <Collapse navbar>
+        <Navbar color="dark" dark expand="sm" className="mb-5">
+          <Container>
+            <NavbarBrand href='/'>
+              Runners Mind
+            </NavbarBrand>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href='/home'>Home</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  NavLink
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Home Page
-                  </DropdownItem>
-                  <DropdownItem>
-                    Posts
-                  </DropdownItem>
-                  <DropdownItem>
-                    Friends
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
             </Nav>
-          </Collapse>
+          </Container>
         </Navbar>
       </div>
     )
