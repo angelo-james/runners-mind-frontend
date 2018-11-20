@@ -18,7 +18,7 @@ class LoginForm extends Component {
           <Input pattern="[A-Za-z]"required/>
           <Label for="password">Enter Password</Label>
           <Input type="password" required/>
-          <Button className="mt-2" color="success">Submit</Button>
+          <Button className="mt-2" color="dark">Submit</Button>
         </FormGroup>
       </Form>
     )
