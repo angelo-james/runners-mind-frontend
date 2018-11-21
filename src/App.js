@@ -10,18 +10,23 @@ import LoginForm from './Components/LoginForm';
 import HomePage from './Components/HomePage';
 import Footer from './Common/Footer';
 
+import { Provider } from 'react-redux';
+import store from './store';
+
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Route exact path="/*" component={ NavBar } />
-          <Route exact path="/" component={ () => <Redirect to="/login" /> } />
-          <Route exact path="/login" component={ LoginForm } />
-          <Route exact path="/home" component={ HomePage } />
-          <Route exact path="/*" component={ Footer } />
-        </div>
-      </Router>
+      <Provider store={ store }>
+        <Router>
+          <div className="App">
+            <Route exact path="/*" component={ NavBar } />
+            <Route exact path="/" component={ () => <Redirect to="/login" /> } />
+            <Route exact path="/login" component={ LoginForm } />
+            <Route exact path="/home" component={ HomePage } />
+            <Route exact path="/*" component={ Footer } />
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }
