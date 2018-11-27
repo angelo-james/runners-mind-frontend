@@ -19,7 +19,19 @@ class Footer extends Component {
             </NavbarBrand>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href='/home'>Home</NavLink>
+                <NavLink href="https://github.com/angelo-james">
+                  <i class="fa fa-github" aria-hidden="true"></i>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink email="angelojames.arriola@gmail.com">
+                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://linkedin.com/in/angelo-james-arriola">
+                  <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                </NavLink>
               </NavItem>
             </Nav>
           </Container>
