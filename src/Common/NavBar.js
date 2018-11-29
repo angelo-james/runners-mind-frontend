@@ -12,7 +12,8 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem,
+  Container } from 'reactstrap';
 
 class NavBar extends Component {
   constructor(props) {
@@ -31,35 +32,29 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">Runners Mind</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  NavLink
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Home Page
-                  </DropdownItem>
-                  <DropdownItem>
-                    Posts
-                  </DropdownItem>
-                  <DropdownItem>
-                    Friends
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
+        <Navbar color="dark" dark expand="lg" className="fixed-top">
+          <Container>
+            <NavbarBrand href='/'>
+              Runners Mind
+            </NavbarBrand>
+            <NavbarToggler onClick={ this.toggle } />
+            <Collapse isOpen={ this.state.isOpen } navbar>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink href='/home'>Home</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href='/home'>Stats</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href='/home'>Progress</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href='/home'>Sign out</NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Container>
         </Navbar>
       </div>
     )
