@@ -1,0 +1,161 @@
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: gold;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
+
+.login-form-image {
+  width: 100%;
+  height: 57rem;
+  filter: grayscale(100%);
+}
+
+.login-form {
+  background-color: white;
+  position: absolute;
+  top: 40%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+
+.signup-form-image {
+  width: 100%;
+  height: 53rem;
+  filter: grayscale(100%);
+}
+
+.signup-form {
+  background-color: white;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header-title {
+  z-index: 999;
+  color: white;
+  position: absolute;
+  top: 46%;
+  left: 35rem;
+  right: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.login-about-image {
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-about-info {
+  top: 5rem;
+}
+
+.login-about-info h3 {
+  text-align: center;
+}
+
+.icon {
+  color: slategray;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-form-image {
+    display: none;
+  }
+  /* .info-message {
+    width: 100%;
+  } */
+}
+
+.home-page-user {
+  margin-top: 5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.fixed-top {
+  position: fixed;
+}
+
+.fixed-bottom {
+  position: fixed;
+}
+
+.avatar-image {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.home-page-info {
+  margin-top: 5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.home-page-body {
+  margin-top: 5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.home-page-body img {
+  height: 50px;
+  width: 50px;
+}
+
+.post-image {
+  padding-left: auto;
+  padding-right: auto;
+}
