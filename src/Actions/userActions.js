@@ -8,7 +8,7 @@ import {
 
 export const validateUser = credentials => {
   return dispatch => {
-    fetch('/users/login', {
+    fetch('api/users/login', {
       method: 'POST',
       body: JSON.stringify(credentials),
       headers: { 
@@ -17,9 +17,15 @@ export const validateUser = credentials => {
       }
     })
     .then( async result => {
+      let token = result.headers.get('authorization')
+      let user = await result.json()
+      localStorage.setItem('jwt', token)
       dispatch({
         type: VALIDATE_USER,
-        payload: await result.json()
+        payload: {
+          token,
+          user
+        }
       })
     })
     .catch(error => {
@@ -33,7 +39,7 @@ export const validateUser = credentials => {
 
 export const createUser = payload => {
   return dispatch => {
-    fetch('/users', {
+    fetch('api/users', {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: { 
@@ -51,6 +57,18 @@ export const createUser = payload => {
       return({
         type: ADD_USER_FAILED,
         payload: error
+      })
+    })
+  }
+}
+
+export const getUser = () => {
+  return dispatch => {
+    fetch('/users')
+    .then(result => {
+      dispatch({
+        type: GET_USER,
+        payload: result.json()
       })
     })
   }
