@@ -4,7 +4,9 @@ import {
   ADD_USER_FAILED, 
   DELETE_USER, 
   VALIDATE_USER, 
-  VALIDATE_USER_FAILED } from './types';
+  VALIDATE_USER_FAILED,
+  ENTER_EMAIL,
+  ENTER_PASSWORD } from './types';
 
 export const validateUser = credentials => {
   return dispatch => {
@@ -70,6 +72,24 @@ export const getUser = () => {
         type: GET_USER,
         payload: result.json()
       })
+    })
+  }
+}
+
+export const enterEmail = (e) => {
+  return dispatch => {
+    dispatch({
+      type: ENTER_EMAIL,
+      event: e.target.value
+    })
+  }
+}
+
+export const enterPassword = (e) => {
+  return dispatch => {
+    dispatch({
+      type: ENTER_PASSWORD,
+      event: e.target.value
     })
   }
 }
