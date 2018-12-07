@@ -22,19 +22,20 @@ export const validateUser = credentials => {
       let token = result.headers.get('authorization')
       let user = await result.json()
       localStorage.setItem('jwt', token)
-      dispatch({
-        type: VALIDATE_USER,
-        payload: {
-          token,
-          user
+      if (user.message) {
+        dispatch({
+          type: VALIDATE_USER_FAILED,
+          payload: user.message
+        })
+      } else {
+          dispatch({
+            type: VALIDATE_USER,
+            payload: {
+              token,
+              user
+            }
+          })
         }
-      })
-    })
-    .catch(error => {
-      return({
-        type: VALIDATE_USER_FAILED,
-        payload: error
-      })
     })
   }  
 }
