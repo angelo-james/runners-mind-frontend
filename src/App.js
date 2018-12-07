@@ -19,12 +19,12 @@ class App extends Component {
       <Provider store={ store }>
         <Router>
           <div className="App">
-            <Route exact path="/*" component={ NavBar } />
+            <NavBar />
             <Route exact path="/" component={ () => <Redirect to="/login" /> } />
             <Route exact path="/login" component={ LoginForm } />
             <Route exact path="/signup" component={ SignUpForm } />
             <Route exact path="/home" component={ HomePage } />
-            <Route exact path="/*" component={ Footer } />
+            <Footer />
           </div>
         </Router>
       </Provider>
