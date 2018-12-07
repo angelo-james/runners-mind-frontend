@@ -31,5 +31,10 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "root": "build/",
+  "clean_urls": false,
+  "routes": {
+    "/**": "index.html"
+  },
   "proxy": "http://localhost:3800"
 }
