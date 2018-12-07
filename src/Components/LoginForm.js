@@ -7,27 +7,48 @@ import {
   Button,
   NavLink } from 'reactstrap';
 
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as userActions from '../Actions/userActions';
+
 class LoginForm extends Component {
+  state = {
+    email: '',
+    //how to change the style of the alert to have it toggle depending on reducer state
+    alert: false
+  }
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+  
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.createUser(this.state);
+  }
+
   render() {
     return (
       // <Container
       // className="mx-auto text-center"
       // >
       <div>
-        <h1 className="header-title">Join tooday, give back to yourself and your community... why not?</h1>
+        <h1 className="header-title">Join today, give back to yourself and your community... why not?</h1>
         <img className="login-form-image" src="https://source.unsplash.com/1600x900/?run" alt=""></img>
-        <Form color="dark" className="login-form rounded container mt-5 w-25">
+        <Form onSubmit={ this.onSubmit } color="dark" className="login-form rounded container mt-5 w-25">
           <h3 className="text-center">Get started... Its free.</h3>
           <FormGroup>
             <Label for="email">Email</Label>
-            <Input type="text" required/>
+            <Input type="text" name="email" onChange={ this.handleChange } required/>
             <Label for="username">Username</Label>
-            <Input type="text" required/>
+            <Input type="text" name="username" onChange={ this.handleChange } required/>
             <Label for="password">Password</Label>
-            <Input type="password" required/>
-            <Button className="mt-2" color="dark">Submit</Button>
+            <Input type="password" name="password" onChange={ this.handleChange } required/>
+            <Button type="submit" className="mt-2" color="dark">Submit</Button>
           </FormGroup>
-          <small>Already a member? <a href="/signup">Login</a></small>
+          <small>Already a member? <Link to="/signup">Login</Link></small>
         </Form>
           <div className="mt-5 px-5">
             <div className="row">
@@ -74,4 +95,10 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+const mapStateToProps = state => {
+  return {
+    ...state
+  }
+}
+
+export default withRouter(connect(mapStateToProps, userActions)(LoginForm));
