@@ -5,30 +5,25 @@ import {
   Label, 
   Input, 
   Button,
-  NavLink } from 'reactstrap';
+  NavLink,
+  Container } from 'reactstrap';
 
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as userActions from '../Actions/userActions';
 
 class SignUpForm extends Component {
-  state = {
-    email: ''
-  }
-
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.validateUser({
+      email: this.props.email,
+      password: this.props.password
     })
   }
   
-  onSubmit = e => {
-    e.preventDefault();
-    this.props.validateUser(this.state);
-  }
-  
   render() {
-    console.log(this.state);
+    if(this.props.loginSuccess) return <Redirect to='/home'/>
+    
     return (
       <div>
         <img className="signup-form-image" src="https://source.unsplash.com/1600x900/?run" alt=""></img>
@@ -36,9 +31,9 @@ class SignUpForm extends Component {
           <h3 className="text-center">Welcome back</h3>
           <FormGroup>
             <Label for="email">Enter Email</Label>
-            <Input type="text" name="email" onChange={ this.handleChange } required/>
+            <Input type="text" name="email" onChange={ this.props.enterEmail } required/>
             <Label for="password">Enter Password</Label>
-            <Input name="password" type="password" onChange={ this.handleChange } required/>
+            <Input name="password" type="password" onChange={ this.props.enterPassword } required/>
             <Button type="submit" className="mt-2" color="dark">Submit</Button>
           </FormGroup>
         </Form>
@@ -49,7 +44,7 @@ class SignUpForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    ...state
+    ...state.user
   }
 }
 
