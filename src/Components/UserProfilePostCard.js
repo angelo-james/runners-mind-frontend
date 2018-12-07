@@ -1,37 +1,34 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class UserProfilePostCard extends Component {
   render() {
+    let Posts = this.props.user.user.post.forEach(post => {
+      return(
+        <div className="row home-page-body mx-auto">
+          <div className="card-body">
+            <h5 className="card-title">{post.title}</h5>
+            <p className="card-text">{post.post}</p>
+            <small>{Date()}</small>
+            <br></br>
+            <input type="text"></input>
+            <a href="/login" className="btn btn-primary">Button</a>
+          </div>
+        </div>
+      )
+    });
     return (
       <div className="container">
-        <div class="row home-page-body mx-auto">
-          <div class="card-body">
-            <img className="avatar-image mt-3" src="https://source.unsplash.com/1600x900/?people" alt="placeholder"></img>
-            <p>mario</p>
-            <h5 class="card-title">wheres peach</h5>
-            <p class="card-text">im looking for peach</p>
-            <small>{Date()}</small>
-            <br></br>
-            <input type="text"></input>
-            <a href="/login" class="btn btn-primary">Button</a>
-          </div>
-        </div>
-
-        <div class="row home-page-body mx-auto">
-          <div class="card-body">
-            <img className="avatar-image mt-3" src="https://source.unsplash.com/1600x900/?people" alt="placeholder"></img>
-            <p>mario</p>
-            <h5 class="card-title">whats a bowser</h5>
-            <p class="card-text">aint got time for that</p>
-            <small>{Date()}</small>
-            <br></br>
-            <input type="text"></input>
-            <a href="/login" class="btn btn-primary">Button</a>
-          </div>
-        </div>
+        {Posts}
       </div>
     )
   }
 }
 
-export default UserProfilePostCard;
+const mapStateToProps = state => {
+  return {
+    ...state.user
+  }
+}
+
+export default connect(mapStateToProps, null)(UserProfilePostCard);
