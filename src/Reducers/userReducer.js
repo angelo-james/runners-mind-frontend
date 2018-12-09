@@ -6,7 +6,8 @@ import {
   VALIDATE_USER, 
   VALIDATE_USER_FAILED,
   ENTER_EMAIL,
-  ENTER_PASSWORD } from '../Actions/types'
+  ENTER_PASSWORD,
+  ENTER_USERNAME } from '../Actions/types'
 
 const initalState = {
   email: '',
@@ -31,7 +32,8 @@ const initalState = {
     case ADD_USER:
       return {
         ...state,
-        user: action.payload
+        user: action.payload,
+        loginSuccess: true
       }
     case ADD_USER_FAILED:
       return {
@@ -53,6 +55,11 @@ const initalState = {
       return {
         ...state,
         password: action.event
+      }
+    case ENTER_USERNAME:
+      return {
+        ...state,
+        username: action.event
       }
     default:
       return state;
