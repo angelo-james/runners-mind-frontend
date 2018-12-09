@@ -6,16 +6,19 @@ import {
   VALIDATE_USER, 
   VALIDATE_USER_FAILED,
   ENTER_EMAIL,
-  ENTER_PASSWORD } from './types';
+  ENTER_PASSWORD,
+  ENTER_USERNAME } from './types';
 
 export const validateUser = credentials => {
+  console.log(credentials, 'credential inside user actions validate user')
   return dispatch => {
-    fetch('api/users/login', {
+    fetch('https://runners-mind-backend.herokuapp.com/api/users/login', {
       method: 'POST',
       body: JSON.stringify(credentials),
       headers: { 
         'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
       }
     })
     .then( async result => {
@@ -42,7 +45,7 @@ export const validateUser = credentials => {
 
 export const createUser = payload => {
   return dispatch => {
-    fetch('api/users', {
+    fetch('https://runners-mind-backend.herokuapp.com/api/users', {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: { 
@@ -90,6 +93,15 @@ export const enterPassword = (e) => {
   return dispatch => {
     dispatch({
       type: ENTER_PASSWORD,
+      event: e.target.value
+    })
+  }
+}
+
+export const enterUsername = (e) => {
+  return dispatch => {
+    dispatch({
+      type: ENTER_USERNAME,
       event: e.target.value
     })
   }
