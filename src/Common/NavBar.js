@@ -10,7 +10,7 @@ import {
   NavLink,
   Container } from 'reactstrap';
 
-  import { Link } from 'react-router-dom';
+  import { Link, Redirect } from 'react-router-dom';
 
 class NavBar extends Component {
   constructor(props) {
@@ -26,10 +26,16 @@ class NavBar extends Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  clearLocalStorage = () => {
+    localStorage.clear();
+    return <Redirect to='/login'></Redirect>
+  }
+
   render() {
     return (
       <div>
-          <Navbar color="dark" dark expand="lg" className="fixed-top">
+          <Navbar color="dark" dark expand="lg" className="fixed-top mb-5">
             <Container>
               <Link to='/'>
                 <NavbarBrand>
@@ -46,7 +52,7 @@ class NavBar extends Component {
                     <Link to='/runners'><NavLink>Find Runners</NavLink></Link>
                   </NavItem>
                   <NavItem>
-                    <Link to='/login'><NavLink>Sign out</NavLink></Link>
+                    <Link to='/login'><NavLink onClick={this.clearLocalStorage}>Sign out</NavLink></Link>
                   </NavItem>
                 </Nav>
               </Collapse>
