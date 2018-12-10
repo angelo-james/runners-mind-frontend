@@ -7,7 +7,7 @@ import logger from 'redux-logger';
 const initialState = {}
 
 //storing thunk under this variable middleware
- const middleware = [ReduxThunk, logger];
+ const middleware = [ReduxThunk];
 
  //creating the stroe and passing the root reducer and the initial state also applying thunk as middleware
  const store = createStore(
