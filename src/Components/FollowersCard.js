@@ -9,9 +9,7 @@ class FollowersCard extends Component {
             Followers
           </div>
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">luigi</li>
-            <li className="list-group-item">toad</li>
-            <li className="list-group-item">yoshi</li>
+            
           </ul>
         </div>
       </div>
