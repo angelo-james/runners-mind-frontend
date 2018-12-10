@@ -10,7 +10,6 @@ import {
   ENTER_USERNAME } from './types';
 
 export const validateUser = credentials => {
-  console.log(credentials, 'credential inside user actions validate user')
   return dispatch => {
     fetch('https://runners-mind-backend.herokuapp.com/api/users/login', {
       method: 'POST',
