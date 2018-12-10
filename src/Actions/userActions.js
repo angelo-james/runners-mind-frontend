@@ -7,7 +7,8 @@ import {
   VALIDATE_USER_FAILED,
   ENTER_EMAIL,
   ENTER_PASSWORD,
-  ENTER_USERNAME } from './types';
+  ENTER_USERNAME,
+  ADD_FOLLOW } from './types';
 
 export const validateUser = credentials => {
   return dispatch => {
@@ -24,6 +25,7 @@ export const validateUser = credentials => {
       let token = result.headers.get('authorization')
       let user = await result.json()
       localStorage.setItem('jwt', token)
+      localStorage.setItem('username', user.username)
       if (user.message) {
         dispatch({
           type: VALIDATE_USER_FAILED,
@@ -104,4 +106,8 @@ export const enterUsername = (e) => {
       event: e.target.value
     })
   }
+}
+
+export const addFollow = () => {
+  
 }
