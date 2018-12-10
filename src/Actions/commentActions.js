@@ -18,7 +18,7 @@ import {
         if (user.message) {
           dispatch({
             type: ADD_COMMENT,
-            payload: user.message
+            payload: user
           })
         }
       })
@@ -26,12 +26,24 @@ import {
 }
 
 export const deleteComment = (comment) => {
-  fetch('https://runners-mind-backend.herokuapp.com/api/comments', {
-        method: 'POST',
-        body: JSON.stringify(comment),
-        headers: { 
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        }
-      })
+  return dispatch => {
+    fetch('https://runners-mind-backend.herokuapp.com/api/comments', {
+          method: 'DELETE',
+          body: JSON.stringify(comment),
+          headers: { 
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          }
+        })
+        .then( async result => {
+          let user = await result.json()
+          
+            dispatch({
+              type: DELETE_COMMENT,
+              payload: user
+            })
+          
+        })
+
+  }
 }
