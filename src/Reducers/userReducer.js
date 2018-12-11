@@ -7,7 +7,8 @@ import {
   VALIDATE_USER_FAILED,
   ENTER_EMAIL,
   ENTER_PASSWORD,
-  ENTER_USERNAME } from '../Actions/types'
+  ENTER_USERNAME,
+  ADD_FOLLOW } from '../Actions/types'
 
 const initalState = {
   email: '',
@@ -60,6 +61,11 @@ const initalState = {
       return {
         ...state,
         username: action.event
+      }
+    case ADD_FOLLOW: 
+      return {
+        ...state,
+        user: action.payload
       }
     default:
       return state;
